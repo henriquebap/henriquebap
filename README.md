@@ -17,6 +17,14 @@
     <a href="https://github.com/henriquebap/Python_Challenge"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin?username=henriquebap&repo=Python_Challenge&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&hide_border=true&icon_color=bf91f3&show_icons=false" alt="Python_Challenge"></a>
     <a href="https://github.com/henriquebap/Machine_Learning_HB"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=henriquebap&repo=Machine_Learning_HB&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&hide_border=true&icon_color=bf91f3&show_icons=false" alt="Machine_Learning_HB"></a>
     <a href="https://github.com/henriquebap/YoloV5-Shark-Detection"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=henriquebap&repo=YoloV5-Shark-Detection&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&hide_border=true&icon_color=bf91f3&show_icons=false" alt="YoloV5-Shark-Detection"></a>
+    <a href="https://github.com/henriquebap/Machine_Learning_HB/blob/main/GYMBUDDY-IA/MLV1_GYMBUDDY_CL.ipynb"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=henriquebap&repo=GYMBUDDY-IA&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&hide_border=true&icon_color=bf91f3&show_icons=false" alt="GYMBUDDY-IA"></a>
+    
+
+
+
+
+
+    
     
   </p>
 
