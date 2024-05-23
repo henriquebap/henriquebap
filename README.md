@@ -13,6 +13,7 @@
   <!-- Repo info cards - https://github.com/anuraghazra/github-readme-stats -->
   <!-- Small repo cards- ttps://github.com/henriquebap?tab=repositories -->
   <p align="left">
+    <a href="https://github.com/henriquebap/Portifolio-IA"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=henriquebap&repo=Portifolio-IA&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&hide_border=true&icon_color=bf91f3&show_icons=false" alt="Portifolio-IA"></a>
         <a href="https://github.com/henriquebap/R-CNN-OD-Sprint"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=henriquebap&repo=R-CNN-OD-Sprint&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&hide_border=true&icon_color=bf91f3&show_icons=false" alt="R-CNN-OD-Sprint"></a>
     <a href="https://github.com/henriquebap/Python_Challenge"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin?username=henriquebap&repo=Python_Challenge&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&hide_border=true&icon_color=bf91f3&show_icons=false" alt="Python_Challenge"></a>
     <a href="https://github.com/henriquebap/Machine_Learning_HB"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=henriquebap&repo=Machine_Learning_HB&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&hide_border=true&icon_color=bf91f3&show_icons=false" alt="Machine_Learning_HB"></a>
