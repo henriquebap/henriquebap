@@ -2,7 +2,8 @@
   
 # Welcome to my profile
 
-[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=henriquebap&theme=tokyonight&locale=pt_BR&date_format=j%20M%5B%20Y%5D)](https://git.io/streak-stats)
+<!--[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=henriquebap&theme=tokyonight&locale=pt_BR&date_format=j%20M%5B%20Y%5D)](https://git.io/streak-stats) -->
+[![GitHub Streak](https://streak-stats.demolab.com?user=henriquebap&theme=tokyonight&hide_border=true&border_radius=5.5&date_format=j%20M%5B%20Y%5D&exclude_days=Sun&card_height=200&currStreakLabel=43A2EB&currStreakNum=A8EB9E)](https://git.io/streak-stats)
 <img width="41%" height="195px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=henriquebap&layout=compact&hide_border=true&title_color=70a5fd&text_color=38bdae&bg_color=1a1b27" />
 
 </div>
