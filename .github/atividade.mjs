@@ -29,7 +29,23 @@ async function pedir(token, query, variables) {
   });
   const corpo = await res.json();
   if (!res.ok || corpo.errors) throw new Error(`GraphQL ${res.status}: ${JSON.stringify(corpo.errors ?? corpo)}`);
-  return corpo.data.user;
+  return corpo.data;
+}
+
+// Com token pessoal, os repos privados só aparecem pelo viewer: user(login).repositories devolve só os públicos.
+// Token de outro dono (o GITHUB_TOKEN do workflow) cai no user(login), só com os públicos.
+// ponytail: os 100 primeiros repos próprios bastam (hoje são menos de 80); paginar se passar disso
+async function reposProprios(token, login) {
+  const campos = 'repositories(first: 100, ownerAffiliations: OWNER, isFork: false) { nodes { isPrivate languages(first: 10) { edges { size node { name } } } } }';
+  const viewer = await pedir(token, `{ viewer { login ${campos} } }`)
+    .then((d) => d.viewer)
+    .catch((e) => { console.log(`viewer indisponível, só repos públicos: ${e.message.slice(0, 120)}`); return null; });
+  const nodes = viewer?.login === login
+    ? viewer.repositories.nodes
+    : (await pedir(token, `query($login: String!) { user(login: $login) { ${campos} } }`, { login })).user.repositories.nodes;
+  const privados = nodes.filter((r) => r.isPrivate).length;
+  console.log(`linguagens de ${nodes.length} repos próprios (${privados} privados)`);
+  return nodes;
 }
 
 // Contagens por dia, da mais antiga a hoje. Hoje ainda sem contribuição não quebra a sequência atual.
@@ -48,21 +64,17 @@ export function sequencias(contagens) {
 }
 
 async function buscar(token, login) {
-  const { contributionsCollection } = await pedir(token,
-    'query($login: String!) { user(login: $login) { contributionsCollection { contributionYears } } }', { login });
+  const { contributionsCollection } = (await pedir(token,
+    'query($login: String!) { user(login: $login) { contributionsCollection { contributionYears } } }', { login })).user;
   const hoje = new Date().toISOString().slice(0, 10);
   const primeiro = Math.min(...contributionsCollection.contributionYears);
   const anos = Array.from({ length: Number(hoje.slice(0, 4)) - primeiro + 1 }, (_, i) => primeiro + i);
   // um alias por ano numa consulta só (a API aceita no máximo um ano por contributionsCollection)
   const campos = anos.map((a) => `a${a}: contributionsCollection(from: "${a}-01-01T00:00:00Z", to: "${a}-12-31T23:59:59Z") `
     + '{ contributionCalendar { totalContributions weeks { contributionDays { date contributionCount } } } }');
-  // ponytail: os 100 primeiros repos próprios bastam (hoje são menos de 80); paginar se passar disso
-  const user = await pedir(token, `query($login: String!) { user(login: $login) { ${campos.join(' ')}
-    repositoriesContributedTo(includeUserRepositories: true, contributionTypes: [COMMIT, PULL_REQUEST, ISSUE, REPOSITORY]) { totalCount }
-    repositories(first: 100, ownerAffiliations: OWNER, isFork: false) { nodes { isPrivate languages(first: 10) { edges { size node { name } } } } } } }`, { login });
-  // no log do workflow: se os privados somem daqui, o token não alcança os repos privados
-  const privados = user.repositories.nodes.filter((r) => r.isPrivate);
-  console.log(`repos próprios: ${user.repositories.nodes.length} (${privados.length} privados, ${privados.filter((r) => r.languages.edges.length).length} com linguagem)`);
+  const { user } = await pedir(token, `query($login: String!) { user(login: $login) { ${campos.join(' ')}
+    repositoriesContributedTo(includeUserRepositories: true, contributionTypes: [COMMIT, PULL_REQUEST, ISSUE, REPOSITORY]) { totalCount } } }`, { login });
+  const repos = await reposProprios(token, login);
 
   const porDia = new Map();
   for (const a of anos) {
@@ -71,7 +83,7 @@ async function buscar(token, login) {
     }
   }
   const linguagens = {};
-  for (const r of user.repositories.nodes) {
+  for (const r of repos) {
     for (const e of r.languages.edges) {
       if (!FORA.has(e.node.name)) linguagens[e.node.name] = (linguagens[e.node.name] ?? 0) + e.size;
     }
