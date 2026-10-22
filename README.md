@@ -12,9 +12,11 @@
   <a href="https://henriquebap.com/sobre"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-open-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-open-light.svg" alt="Open to AI Engineer roles" height="34" /></picture></a>
 </p>
 
-I build LLM products end to end: agents with guardrails in code, voice pipelines, and the evaluation that shows whether they work.
+AI Engineer focused on LLM evaluation, agentic systems and voice AI.
 
-I shipped LLM-as-Judge evaluators in production for clinical AI at VOA Health, and I build HOB Oficina, the multi-tenant system auto mechanic shops run on, as sole engineer.
+- **Currently** — building HOB Oficina, the multi-tenant system auto mechanic shops run on, with agents, WhatsApp and voice. Sole engineer.
+- **Previously** — ML / AI Engineer at VOA Health: clinical ASR benchmarks and LLM-as-Judge evaluators in production.
+- **Open to** — AI Engineer roles, remote.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/atividade-dark.svg" />
