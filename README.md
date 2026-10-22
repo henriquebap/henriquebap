@@ -47,7 +47,7 @@ Those three run in private repositories. Architecture and trade-offs: **[henriqu
 ## Toolbox
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=python,pytorch,sklearn,fastapi,postgres,supabase,docker,aws,githubactions,ts,js,react,nextjs,nodejs,tailwind,vite,sentry&perline=9&theme=dark" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=python%2Cpytorch%2Csklearn%2Cfastapi%2Cpostgres%2Csupabase%2Cdocker%2Caws%2Cgithubactions%2Cts%2Cjs%2Creact%2Cnextjs%2Cnodejs%2Ctailwind%2Cvite%2Csentry&perline=9&theme=dark" />
   <img src="https://skillicons.dev/icons?i=python,pytorch,sklearn,fastapi,postgres,supabase,docker,aws,githubactions,ts,js,react,nextjs,nodejs,tailwind,vite,sentry&perline=9&theme=light" alt="Python, PyTorch, scikit-learn, FastAPI, Postgres, Supabase, Docker, AWS, GitHub Actions, TypeScript, JavaScript, React, Next.js, Node.js, Tailwind, Vite, Sentry" />
 </picture>
 
