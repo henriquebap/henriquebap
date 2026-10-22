@@ -12,7 +12,9 @@
   <a href="https://henriquebap.com/sobre"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-open-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-open-light.svg" alt="Open to AI Engineer roles" height="34" /></picture></a>
 </p>
 
-At a HealthTech I built the **evaluation for medical AI**, up to **LLM-as-Judge in production**. Today I build **HOB Oficina** on my own: the system auto mechanic shops run on, with **agents, voice and WhatsApp** inside it.
+I build LLM products end to end: agents with guardrails in code, voice pipelines, and the evaluation that shows whether they work.
+
+I shipped LLM-as-Judge evaluators in production for clinical AI at VOA Health, and I build HOB Oficina, the multi-tenant system auto mechanic shops run on, as sole engineer.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/atividade-dark.svg" />
