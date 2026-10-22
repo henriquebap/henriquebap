@@ -1,0 +1,64 @@
+name: profile
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # 03:00 em Brasília
+  workflow_dispatch:
+  push:
+    branches: [main, feat/perfil-2026]
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      # parte das imagens da última execução: gerador que falhar deixa a imagem antiga no ar
+      - run: |
+          mkdir -p dist
+          git fetch --depth=1 origin output && git archive FETCH_HEAD | tar -x -C dist || true
+
+      - uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3.5.0
+        continue-on-error: true
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
+
+      # PROFILE_TOKEN: token só de leitura, para linguagens e totais contarem os repos privados.
+      # Sem ele, cai no GITHUB_TOKEN e os cartões mostram só o que é público.
+      - uses: yoshi389111/github-profile-3d-contrib@7d95e7d4cdc028dd1e1cbd957d65f35efb12ae39 # v0.9.3
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+          SETTING_JSON: .github/profile-3d.json
+
+      - uses: vn7n24fzkq/github-profile-summary-cards@58ec032e39377dd38329bdc1db70074fe74fbb17 # v0.12.1
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
+        with:
+          USERNAME: ${{ github.repository_owner }}
+          UTC_OFFSET: -3
+          THEME: tokyonight
+          ANIMATION: draw
+          NAME: Henrique Baptista
+          AUTO_PUSH: false
+
+      - run: |
+          cp profile-3d-contrib/profile-3d.svg dist/ || true
+          cp profile-summary-card-output/tokyonight/*.svg dist/ || true
+
+      # publica o dist/ na branch output, de onde o README lê as imagens
+      - uses: crazy-max/ghaction-github-pages@df5cc2bfa78282ded844b354faee141f06b41865 # v4.2.0
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
