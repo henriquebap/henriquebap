@@ -1,0 +1,56 @@
+name: profile
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # 03:00 em Brasília
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      # imagens da última execução: se o cartão falhar, o antigo fica no ar
+      - run: |
+          mkdir -p last gen
+          git fetch --depth=1 origin output && git archive FETCH_HEAD | tar -x -C last || true
+
+      # snake comendo o gráfico de contribuições, nos azuis do cartão (Primer) em vez do verde padrão
+      - uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3.5.0
+        continue-on-error: true
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            gen/snake-light.svg?color_snake=#0550ae&color_dots=#ebedf0,#b6e3ff,#80ccff,#54aeff,#218bff
+            gen/snake-dark.svg?color_snake=#a5d6ff&color_dots=#161b22,#0d419d,#1158c7,#1f6feb,#388bfd
+
+      # PROFILE_TOKEN: token só de leitura, para os repos privados entrarem nas linguagens e na contagem de repos.
+      # Sem ele, cai no GITHUB_TOKEN e o cartão conta só o que é público (os totais já incluem os privados).
+      - run: node .github/atividade.mjs gen
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+
+      # só estas imagens vão para a output: o que sair da lista some de lá na próxima execução
+      - run: |
+          mkdir -p dist
+          cp assets/*.svg dist/
+          for f in atividade-dark.svg atividade-light.svg snake-dark.svg snake-light.svg; do
+            cp "gen/$f" dist/ 2>/dev/null || cp "last/$f" dist/ 2>/dev/null || echo "::warning::$f não foi gerado"
+          done
+
+      # publica o dist/ na branch output, de onde o README lê as imagens
+      - uses: crazy-max/ghaction-github-pages@1d6ee9b181a81033a16bd707a1401afa978daab4 # v5.0.0
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,34 +1,60 @@
-<div align = "Center">
-  
-# Welcome to my profile
+<!-- Imagens em assets/ (geradas por .github/marca.mjs) e o cartão de atividade (.github/atividade.mjs):
+     o workflow profile.yml publica tudo na branch output, em versão escura e clara. -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/header-dark.svg" />
+  <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/header-light.svg" alt="Henrique Baptista · AI Engineer · LLM-as-Judge, Evals, ASR, Product Engineer" width="100%" />
+</picture>
 
-<!--[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=henriquebap&theme=tokyonight&locale=pt_BR&date_format=j%20M%5B%20Y%5D)](https://git.io/streak-stats) -->
-[![GitHub Streak](https://streak-stats.demolab.com?user=henriquebap&theme=tokyonight&hide_border=true&border_radius=5.5&date_format=j%20M%5B%20Y%5D&card_height=200&currStreakLabel=43A2EB&currStreakNum=A8EB9E)](https://git.io/streak-stats)
-<img width="41%" height="195px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=henriquebap&layout=compact&hide_border=true&title_color=70a5fd&text_color=38bdae&bg_color=1a1b27" />
+<p>
+  <a href="https://henriquebap.com/sobre"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-site-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-site-light.svg" alt="henriquebap.com" height="34" /></picture></a>
+  <a href="https://www.linkedin.com/in/henriqueobaptista/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-linkedin-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-linkedin-light.svg" alt="LinkedIn" height="34" /></picture></a>
+  <a href="mailto:henrique.obap@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-email-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-email-light.svg" alt="Email" height="34" /></picture></a>
+  <a href="https://henriquebap.com/sobre"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-open-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-open-light.svg" alt="Open to AI Engineer roles" height="34" /></picture></a>
+</p>
 
-</div>
+At a HealthTech I built the **evaluation for medical AI**, up to **LLM-as-Judge in production**. Today I build **HOB Oficina** on my own: the system auto mechanic shops run on, with **agents, voice and WhatsApp** inside it.
 
-<details open> 
-  <summary><h2> 🤖 My Machine Learning & Portifolio Projects </h2></summary>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/atividade-dark.svg" />
+  <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/atividade-light.svg" alt="Country, on GitHub since, contributions, current and longest streak, repositories worked on, contributions per year and languages" width="100%" />
+</picture>
 
-  <!-- Repo info cards - https://github.com/anuraghazra/github-readme-stats -->
-  <!-- Small repo cards- ttps://github.com/henriquebap?tab=repositories -->
-  <p align="left">
-    <a href="https://github.com/henriquebap/Portifolio-IA"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=henriquebap&repo=Portifolio-IA&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&hide_border=true&icon_color=bf91f3&show_icons=false" alt="Portifolio-IA"></a>
-        <a href="https://github.com/henriquebap/R-CNN-OD-Sprint"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=henriquebap&repo=R-CNN-OD-Sprint&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&hide_border=true&icon_color=bf91f3&show_icons=false" alt="R-CNN-OD-Sprint"></a>
-    <a href="https://github.com/henriquebap/YoloV5-Shark-Detection"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=henriquebap&repo=YoloV5-Shark-Detection&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&hide_border=true&icon_color=bf91f3&show_icons=false" alt="YoloV5-Shark-Detection"></a>
-    <a href="https://github.com/henriquebap/GYMBUDDY-IA.git"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=henriquebap&repo=GYMBUDDY-IA&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&hide_border=true&icon_color=bf91f3&show_icons=false" alt="GYMBUDDY-IA"></a>
-    <a href="https://github.com/henriquebap/Avocado-Prices-EDA-Model-Traning"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=henriquebap&repo=Avocado-Prices-EDA-Model-Traning&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&hide_border=true&icon_color=bf91f3&show_icons=false" alt="Avocado-Prices-EDA-Model-Traning"></a>
-    <a href="https://github.com/henriquebap/Machine_Learning_HB"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=henriquebap&repo=Machine_Learning_HB&theme=tokyonight&bg_color=1a1b27&title_color=70a5fd&hide_border=true&icon_color=bf91f3&show_icons=false" alt="Machine_Learning_HB"></a>
-    
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/snake-dark.svg" />
+  <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/snake-light.svg" alt="Snake eating the contribution graph" width="100%" />
+</picture>
 
+## What I build
 
+| Project | What it is |
+|---|---|
+| **[HOB Oficina](https://henriquebap.com/oficina)** · own product | The system an auto mechanic shop runs on every day, now multi-tenant. Agents with typed tools, Jev for typed judgments, guardrails and confirmations decided in code. |
+| **[Medical AI](https://henriquebap.com/sobre#medical-asr)** · VOA Health, 2025–2026 | Streaming ASR experiments, medication-first evaluation of ASR providers, and LLM-as-Judge evaluators in production, calibrated against human annotators. |
+| **[WordinAI](https://wordinai.com)** · live SaaS, solo | A deep agent (deepagents / LangGraph) that turns long audio into sourced documents: hybrid search, citations assembled in code, model routing by task. |
 
+Those three run in private repositories. Architecture and trade-offs: **[henriquebap/ai-portfolio](https://github.com/henriquebap/ai-portfolio)** and **[henriquebap.com/sobre](https://henriquebap.com/sobre)**.
 
+## Public ML projects
 
-    
-    
-  </p>
+| Area | Project | What it shows |
+|---|---|---|
+| Applied ML | [Education Risk Prediction](https://github.com/henriquebap/datathon-educacao-passos-magicos) · [live](https://henriquebap-datathon-educacao-passos-magicos.hf.space) | XGBoost, FastAPI and a Streamlit dashboard for an education NGO, with Evidently drift monitoring. 92.59% accuracy on held-out data. |
+| Computer vision | [Insurance Computer Vision](https://github.com/henriquebap/R-CNN-OD-Sprint) | Detectron2 / Mask R-CNN on a dataset built from scratch. Top-10 finalist in the Porto Seguro challenge. |
+| Computer vision | [Marine Vision Systems](https://github.com/henriquebap/Blue-Clean-YoloV9) · [YOLOv5](https://github.com/henriquebap/YoloV5-Shark-Detection) | YOLOv9 for marine waste, YOLOv5 for marine animals. |
+| Embeddings | [Genetic Syndrome Classification](https://github.com/henriquebap/Genetic_Syndrome_Classification_w_Embeddings_KNN) | KNN over 320-dimensional image embeddings, t-SNE, multi-metric evaluation. |
+| Time series | [Experimental Stock Forecasting](https://github.com/henriquebap/previsao_acoes) | PyTorch + FastAPI whose monitoring exposed weak generalization, kept public as an honest experiment. |
 
-  <a href="https://github.com/henriquebap?tab=repositories"><img alt="All Repositories" title="All Repositories" src="https://custom-icon-badges.demolab.com/badge/-Click%20Here%20For%20All%20My%20Repos-1F222E?style=for-the-badge&logoColor=white&logo=repo"/></a>
-</details>
+## Toolbox
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=python%2Cpytorch%2Csklearn%2Cfastapi%2Cpostgres%2Csupabase%2Cdocker%2Caws%2Cgithubactions%2Cts%2Cjs%2Creact%2Cnextjs%2Cnodejs%2Ctailwind%2Cvite%2Csentry&perline=9&theme=dark" />
+  <img src="https://skillicons.dev/icons?i=python,pytorch,sklearn,fastapi,postgres,supabase,docker,aws,githubactions,ts,js,react,nextjs,nodejs,tailwind,vite,sentry&perline=9&theme=light" alt="Python, PyTorch, scikit-learn, FastAPI, Postgres, Supabase, Docker, AWS, GitHub Actions, TypeScript, JavaScript, React, Next.js, Node.js, Tailwind, Vite, Sentry" />
+</picture>
+
+| Area | Tools |
+|---|---|
+| **Evaluate** | LLM-as-Judge · LangSmith · evaluation datasets · WER / CER (jiwer) · Argilla · human calibration (Cohen's κ) · failure analysis |
+| **Agents & LLMs** | OpenAI Agents SDK · LangGraph / deepagents · Jev (TypeSafe) · MCP · RAG and hybrid search · pgvector · prompt caching and model routing |
+| **Model** | PyTorch · Hugging Face · Whisper · VAD and segmentation · scikit-learn · XGBoost · Detectron2 / YOLO |
+| **Build** | Python · FastAPI · TypeScript · Next.js · Supabase / Postgres (RLS) · Zod · Streamlit / Gradio |
+| **Operate** | Docker · AWS (S3, EC2) · Railway · GitHub Actions · Sentry / PostHog · Prometheus · Evidently |
