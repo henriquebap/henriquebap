@@ -17,7 +17,7 @@ At a HealthTech I built the **evaluation for medical AI**, up to **LLM-as-Judge 
 
 ## What I build
 
-| | |
+| Project | What it is |
 |---|---|
 | **[HOB Oficina](https://henriquebap.com/oficina)** · own product | The system an auto mechanic shop runs on every day, now multi-tenant. Agents with typed tools, Jev for typed judgments, guardrails and confirmations decided in code. |
 | **[Medical AI](https://henriquebap.com/sobre#medical-asr)** · VOA Health, 2025–2026 | Streaming ASR experiments, medication-first evaluation of ASR providers, and LLM-as-Judge evaluators in production, calibrated against human annotators. |
