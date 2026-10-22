@@ -59,7 +59,10 @@ async function buscar(token, login) {
   // ponytail: os 100 primeiros repos próprios bastam (hoje são menos de 80); paginar se passar disso
   const user = await pedir(token, `query($login: String!) { user(login: $login) { ${campos.join(' ')}
     repositoriesContributedTo(includeUserRepositories: true, contributionTypes: [COMMIT, PULL_REQUEST, ISSUE, REPOSITORY]) { totalCount }
-    repositories(first: 100, ownerAffiliations: OWNER, isFork: false) { nodes { languages(first: 10) { edges { size node { name } } } } } } }`, { login });
+    repositories(first: 100, ownerAffiliations: OWNER, isFork: false) { nodes { isPrivate languages(first: 10) { edges { size node { name } } } } } } }`, { login });
+  // no log do workflow: se os privados somem daqui, o token não alcança os repos privados
+  const privados = user.repositories.nodes.filter((r) => r.isPrivate);
+  console.log(`repos próprios: ${user.repositories.nodes.length} (${privados.length} privados, ${privados.filter((r) => r.languages.edges.length).length} com linguagem)`);
 
   const porDia = new Map();
   for (const a of anos) {
