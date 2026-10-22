@@ -12,7 +12,7 @@
   <a href="https://henriquebap.com/sobre"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-open-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-open-light.svg" alt="Open to AI Engineer roles" height="34" /></picture></a>
 </p>
 
-AI Engineer focused on LLM evaluation, agentic systems and voice AI.
+AI Engineer working across generative AI: agents, RAG, evals and voice AI, plus classic ML and computer vision.
 
 - **Currently** — building HOB Oficina, the multi-tenant system auto mechanic shops run on, with agents, WhatsApp and voice. Sole engineer.
 - **Previously** — ML / AI Engineer at VOA Health: clinical ASR benchmarks and LLM-as-Judge evaluators in production.
