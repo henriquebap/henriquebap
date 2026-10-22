@@ -22,6 +22,11 @@ jobs:
           mkdir -p last gen
           git fetch --depth=1 origin output && git archive FETCH_HEAD | tar -x -C last || true
 
+      - run: node .github/diag.mjs
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROFILE_TOKEN }}
+
       # PROFILE_TOKEN: token só de leitura, para os repos privados entrarem nas linguagens e na contagem de repos.
       # Sem ele, cai no GITHUB_TOKEN e o cartão conta só o que é público (os totais já incluem os privados).
       - run: node .github/atividade.mjs gen
