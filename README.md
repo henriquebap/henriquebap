@@ -48,21 +48,10 @@ Those three run in private repositories. Architecture and trade-offs: **[henriqu
 ## Activity
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/0-profile-details.svg" alt="Contributions over the last year" width="100%" />
+  <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/anos.svg" alt="Contributions per year" width="100%" />
 </p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/2-most-commit-language.svg" alt="Most used languages, by commit" width="49%" />
   <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/4-productive-time.svg" alt="Commits by hour of the day" width="49%" />
-</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/profile-3d.svg" alt="3D contribution calendar" width="100%" />
-</p>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/github-snake-dark.svg" />
-    <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/github-snake.svg" alt="Snake eating my contribution graph" />
-  </picture>
 </p>
