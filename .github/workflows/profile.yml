@@ -5,7 +5,7 @@ on:
     - cron: "0 6 * * *" # 03:00 em Brasília
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, feat/perfil-2026]
 
 permissions:
   contents: write
@@ -17,36 +17,25 @@ jobs:
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
-      # imagens da última execução: gerador que falhar deixa a imagem antiga no ar
+      # imagens da última execução: se o cartão falhar, o antigo fica no ar
       - run: |
-          mkdir -p last
+          mkdir -p last gen
           git fetch --depth=1 origin output && git archive FETCH_HEAD | tar -x -C last || true
 
-      # PROFILE_TOKEN: token só de leitura, para os totais e as linguagens contarem os repos privados.
-      # Sem ele, cai no GITHUB_TOKEN e os cartões mostram só o que é público.
-      - run: node .github/anos.mjs anos.svg
+      # PROFILE_TOKEN: token só de leitura, para os repos privados entrarem nas linguagens e na contagem de repos.
+      # Sem ele, cai no GITHUB_TOKEN e o cartão conta só o que é público (os totais já incluem os privados).
+      - run: node .github/atividade.mjs gen
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
-
-      - uses: vn7n24fzkq/github-profile-summary-cards@58ec032e39377dd38329bdc1db70074fe74fbb17 # v0.12.1
-        continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
-        with:
-          USERNAME: ${{ github.repository_owner }}
-          UTC_OFFSET: -3
-          THEME: tokyonight
-          ANIMATION: draw
-          NAME: Henrique Baptista
-          AUTO_PUSH: false
 
       # só estas imagens vão para a output: o que sair da lista some de lá na próxima execução
       - run: |
           mkdir -p dist
-          for f in anos.svg profile-summary-card-output/tokyonight/2-most-commit-language.svg profile-summary-card-output/tokyonight/4-productive-time.svg; do
-            cp "$f" dist/ 2>/dev/null || cp "last/$(basename "$f")" dist/ 2>/dev/null || echo "::warning::$(basename "$f") não foi gerado"
+          cp assets/*.svg dist/
+          for f in atividade-dark.svg atividade-light.svg; do
+            cp "gen/$f" dist/ 2>/dev/null || cp "last/$f" dist/ 2>/dev/null || echo "::warning::$f não foi gerado"
           done
 
       # publica o dist/ na branch output, de onde o README lê as imagens

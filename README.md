@@ -1,19 +1,23 @@
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1b27,100:0ea5e9&height=180&section=header&text=Henrique%20Baptista&fontSize=44&fontColor=ffffff&fontAlignY=36&desc=AI%20Engineer&descSize=20&descAlignY=58&animation=fadeIn" alt="Henrique Baptista · AI Engineer" width="100%" />
-</p>
+<!-- Imagens em assets/ (geradas por .github/marca.mjs) e o cartão de atividade (.github/atividade.mjs):
+     o workflow profile.yml publica tudo na branch output, em versão escura e clara. -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/header-dark.svg" />
+  <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/header-light.svg" alt="Henrique Baptista · AI Engineer · LLM-as-Judge, Evals, ASR, Product Engineer" width="100%" />
+</picture>
 
-<p align="center">
-  <a href="https://henriquebap.com/sobre"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&duration=2200&pause=1000&color=70A5FD&center=true&vCenter=true&width=480&height=50&lines=AI+Engineer;LLM-as-Judge;Evals;ASR;Product+Engineer" alt="AI Engineer · LLM-as-Judge · Evals · ASR · Product Engineer" /></a>
-</p>
-
-<p align="center">
-  <a href="https://henriquebap.com/sobre"><img src="https://img.shields.io/badge/Portfolio-henriquebap.com-0ea5e9?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Portfolio" /></a>
-  <a href="https://www.linkedin.com/in/henriqueobaptista/"><img src="https://img.shields.io/badge/LinkedIn-Henrique_Baptista-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="mailto:henrique.obap@gmail.com"><img src="https://img.shields.io/badge/Email-henrique.obap%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
-  <img src="https://img.shields.io/badge/Open_to-AI_Engineer_roles_%C2%B7_remote-38bdae?style=for-the-badge" alt="Open to AI Engineer roles, remote" />
+<p>
+  <a href="https://henriquebap.com/sobre"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-site-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-site-light.svg" alt="henriquebap.com" height="34" /></picture></a>
+  <a href="https://www.linkedin.com/in/henriqueobaptista/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-linkedin-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-linkedin-light.svg" alt="LinkedIn" height="34" /></picture></a>
+  <a href="mailto:henrique.obap@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-email-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-email-light.svg" alt="Email" height="34" /></picture></a>
+  <a href="https://henriquebap.com/sobre"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-open-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-open-light.svg" alt="Open to AI Engineer roles" height="34" /></picture></a>
 </p>
 
 At a HealthTech I built the **evaluation for medical AI**, up to **LLM-as-Judge in production**. Today I build **HOB Oficina** on my own: the system auto mechanic shops run on, with **agents, voice and WhatsApp** inside it.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/atividade-dark.svg" />
+  <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/atividade-light.svg" alt="Contributions, current and longest streak, repositories contributed to, contributions per year and languages" width="100%" />
+</picture>
 
 ## What I build
 
@@ -37,21 +41,9 @@ Those three run in private repositories. Architecture and trade-offs: **[henriqu
 
 ## Toolbox
 
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=python,pytorch,sklearn,fastapi,ts,nextjs,supabase,postgres,docker,aws&perline=10" alt="Python, PyTorch, scikit-learn, FastAPI, TypeScript, Next.js, Supabase, Postgres, Docker, AWS" />
-</p>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=python,pytorch,sklearn,fastapi,ts,nextjs,supabase,postgres,docker,aws&perline=10&theme=dark" />
+  <img src="https://skillicons.dev/icons?i=python,pytorch,sklearn,fastapi,ts,nextjs,supabase,postgres,docker,aws&perline=10&theme=light" alt="Python, PyTorch, scikit-learn, FastAPI, TypeScript, Next.js, Supabase, Postgres, Docker, AWS" />
+</picture>
 
-<p align="center">
-  OpenAI Agents SDK · LangGraph / deepagents · LangSmith · Hugging Face · Whisper · Argilla · pgvector · MCP
-</p>
-
-## Activity
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/anos.svg" alt="Contributions per year" width="100%" />
-</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/2-most-commit-language.svg" alt="Most used languages, by commit" width="49%" />
-  <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/4-productive-time.svg" alt="Commits by hour of the day" width="49%" />
-</p>
+OpenAI Agents SDK · LangGraph / deepagents · LangSmith · Hugging Face · Whisper · Argilla · pgvector · MCP
