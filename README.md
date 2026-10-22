@@ -16,7 +16,12 @@ At a HealthTech I built the **evaluation for medical AI**, up to **LLM-as-Judge 
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/atividade-dark.svg" />
-  <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/atividade-light.svg" alt="Contributions, current and longest streak, repositories contributed to, contributions per year and languages" width="100%" />
+  <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/atividade-light.svg" alt="Country, on GitHub since, contributions, current and longest streak, repositories worked on, contributions per year and languages" width="100%" />
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/snake-dark.svg" />
+  <img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/snake-light.svg" alt="Snake eating the contribution graph" width="100%" />
 </picture>
 
 ## What I build
@@ -42,8 +47,14 @@ Those three run in private repositories. Architecture and trade-offs: **[henriqu
 ## Toolbox
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=python,pytorch,sklearn,fastapi,ts,nextjs,supabase,postgres,docker,aws&perline=10&theme=dark" />
-  <img src="https://skillicons.dev/icons?i=python,pytorch,sklearn,fastapi,ts,nextjs,supabase,postgres,docker,aws&perline=10&theme=light" alt="Python, PyTorch, scikit-learn, FastAPI, TypeScript, Next.js, Supabase, Postgres, Docker, AWS" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=python,pytorch,sklearn,fastapi,postgres,supabase,docker,aws,githubactions,ts,js,react,nextjs,nodejs,tailwind,vite,sentry&perline=9&theme=dark" />
+  <img src="https://skillicons.dev/icons?i=python,pytorch,sklearn,fastapi,postgres,supabase,docker,aws,githubactions,ts,js,react,nextjs,nodejs,tailwind,vite,sentry&perline=9&theme=light" alt="Python, PyTorch, scikit-learn, FastAPI, Postgres, Supabase, Docker, AWS, GitHub Actions, TypeScript, JavaScript, React, Next.js, Node.js, Tailwind, Vite, Sentry" />
 </picture>
 
-OpenAI Agents SDK · LangGraph / deepagents · LangSmith · Hugging Face · Whisper · Argilla · pgvector · MCP
+| Area | Tools |
+|---|---|
+| **Evaluate** | LLM-as-Judge · LangSmith · evaluation datasets · WER / CER (jiwer) · Argilla · human calibration (Cohen's κ) · failure analysis |
+| **Agents & LLMs** | OpenAI Agents SDK · LangGraph / deepagents · Jev (TypeSafe) · MCP · RAG and hybrid search · pgvector · prompt caching and model routing |
+| **Model** | PyTorch · Hugging Face · Whisper · VAD and segmentation · scikit-learn · XGBoost · Detectron2 / YOLO |
+| **Build** | Python · FastAPI · TypeScript · Next.js · Supabase / Postgres (RLS) · Zod · Streamlit / Gradio |
+| **Operate** | Docker · AWS (S3, EC2) · Railway · GitHub Actions · Sentry / PostHog · Prometheus · Evidently |

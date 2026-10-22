@@ -1,6 +1,6 @@
 // Cartão de atividade do perfil nas cores do GitHub (Primer), em versão escura e clara:
-// total de contribuições, sequência atual e maior, repos com contribuição no último ano,
-// contribuições por ano e linguagens pelo tamanho do código dos repos próprios.
+// país e data de entrada, total de contribuições, sequência atual e maior, repos trabalhados (no total e no
+// último ano), contribuições por ano e linguagens pelo tamanho do código dos repos próprios.
 // ponytail: contribuições só por ano, de propósito: mês, dia e hora mostram padrão de trabalho.
 // Uso: GITHUB_TOKEN=… USERNAME=… node .github/atividade.mjs [pasta]. Sem token, desenha dados de exemplo e se confere.
 import assert from 'node:assert';
@@ -14,7 +14,8 @@ const PALETAS = {
 // Notebooks guardam as saídas das células e inflam o tamanho do código.
 const FORA = new Set(['Jupyter Notebook']);
 const W = 840;
-const H = 262;
+const TOPO = 34; // faixa do país e da data de entrada
+const H = 262 + TOPO;
 const FONTE = `-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif`;
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -36,7 +37,7 @@ async function pedir(token, query, variables) {
 // Token de outro dono (o GITHUB_TOKEN do workflow) cai no user(login), só com os públicos.
 // ponytail: os 100 primeiros repos próprios bastam (hoje são menos de 80); paginar se passar disso
 async function reposProprios(token, login) {
-  const campos = 'repositories(first: 100, ownerAffiliations: OWNER, isFork: false) { nodes { isPrivate languages(first: 10) { edges { size node { name } } } } }';
+  const campos = 'repositories(first: 100, ownerAffiliations: OWNER, isFork: false) { nodes { nameWithOwner isPrivate languages(first: 10) { edges { size node { name } } } } }';
   const viewer = await pedir(token, `{ viewer { login ${campos} } }`)
     .then((d) => d.viewer)
     .catch((e) => { console.log(`viewer indisponível, só repos públicos: ${e.message.slice(0, 120)}`); return null; });
@@ -70,9 +71,13 @@ async function buscar(token, login) {
   const primeiro = Math.min(...contributionsCollection.contributionYears);
   const anos = Array.from({ length: Number(hoje.slice(0, 4)) - primeiro + 1 }, (_, i) => primeiro + i);
   // um alias por ano numa consulta só (a API aceita no máximo um ano por contributionsCollection)
+  // ponytail: 100 repos por tipo de contribuição por ano bastam; subir maxRepositories se um ano passar disso
+  const repo = 'repository { nameWithOwner }';
   const campos = anos.map((a) => `a${a}: contributionsCollection(from: "${a}-01-01T00:00:00Z", to: "${a}-12-31T23:59:59Z") `
-    + '{ contributionCalendar { totalContributions weeks { contributionDays { date contributionCount } } } }');
-  const { user } = await pedir(token, `query($login: String!) { user(login: $login) { ${campos.join(' ')}
+    + '{ contributionCalendar { totalContributions weeks { contributionDays { date contributionCount } } } '
+    + `commitContributionsByRepository(maxRepositories: 100) { ${repo} } pullRequestContributionsByRepository(maxRepositories: 100) { ${repo} } `
+    + `issueContributionsByRepository(maxRepositories: 100) { ${repo} } repositoryContributions(first: 100) { nodes { ${repo} } } }`);
+  const { user } = await pedir(token, `query($login: String!) { user(login: $login) { createdAt location ${campos.join(' ')}
     repositoriesContributedTo(includeUserRepositories: true, contributionTypes: [COMMIT, PULL_REQUEST, ISSUE, REPOSITORY]) { totalCount } } }`, { login });
   const repos = await reposProprios(token, login);
 
@@ -81,6 +86,15 @@ async function buscar(token, login) {
     for (const semana of user[`a${a}`].contributionCalendar.weeks) {
       for (const d of semana.contributionDays) if (d.date <= hoje) porDia.set(d.date, d.contributionCount);
     }
+  }
+  // repos trabalhados: os próprios (sem fork) mais todo repo com commit, PR, issue ou criação, forks incluídos
+  const trabalhados = new Set(repos.map((r) => r.nameWithOwner));
+  for (const a of anos) {
+    const c = user[`a${a}`];
+    for (const lista of [c.commitContributionsByRepository, c.pullRequestContributionsByRepository, c.issueContributionsByRepository]) {
+      for (const x of lista) trabalhados.add(x.repository.nameWithOwner);
+    }
+    for (const n of c.repositoryContributions.nodes) trabalhados.add(n.repository.nameWithOwner);
   }
   const linguagens = {};
   for (const r of repos) {
@@ -91,7 +105,10 @@ async function buscar(token, login) {
   return {
     porAno: anos.map((ano) => ({ ano, total: user[`a${ano}`].contributionCalendar.totalContributions })),
     ...sequencias([...porDia].sort(([a], [b]) => a.localeCompare(b)).map(([, n]) => n)),
-    repos: user.repositoriesContributedTo.totalCount,
+    reposTotal: trabalhados.size,
+    reposAno: user.repositoriesContributedTo.totalCount,
+    desde: new Date(user.createdAt).toLocaleString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' }),
+    local: user.location,
     linguagens
   };
 }
@@ -105,14 +122,29 @@ function topLinguagens(linguagens) {
   return resto > 0 ? [...top, { nome: 'Other', pct: resto }] : top;
 }
 
-function desenhar({ porAno, atual, maior, repos, linguagens }, p) {
+const ICONES = {
+  local: '<path d="M8 14.5S3 10.2 3 6.4a5 5 0 0 1 10 0c0 3.8-5 8.1-5 8.1z"/><circle cx="8" cy="6.4" r="1.8"/>',
+  desde: '<rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3"/>'
+};
+
+function desenhar({ porAno, atual, maior, reposTotal, reposAno, desde, local, linguagens }, p) {
+  // ponytail: largura do texto estimada em 7px por letra (13px); só decide onde começa o próximo ícone
+  let cursor = 28;
+  const topo = [local && ['local', local], ['desde', `On GitHub since ${desde}`]].filter(Boolean).map(([icone, texto]) => {
+    const x = cursor;
+    cursor += 22 + texto.length * 7 + 18;
+    return `<g transform="translate(${x} 22)" style="fill:none;stroke:${p.apagado};stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round">${ICONES[icone]}</g>`
+      + `<text x="${x + 22}" y="35" class="r">${esc(texto)}</text>`;
+  });
+
   const metricas = [
     [fmt(porAno.reduce((s, a) => s + a.total, 0)), 'contributions', p.texto],
     [dias(atual), 'current streak', p.destaque],
     [dias(maior), 'longest streak', p.texto],
-    [fmt(repos), 'repos contributed · last year', p.texto]
+    [fmt(reposTotal), 'repos worked on', p.texto],
+    [fmt(reposAno), 'repos · last year', p.texto]
   ].map(([valor, rotulo, cor], i) => {
-    const x = 28 + i * ((W - 56) / 4);
+    const x = 28 + i * ((W - 56) / 5);
     return `<text x="${x}" y="58" class="m" style="fill:${cor}">${valor}</text><text x="${x}" y="80" class="r">${rotulo}</text>`;
   });
 
@@ -158,6 +190,7 @@ text { font-family: ${FONTE} }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important } }
 </style><defs><clipPath id="pilula"><rect x="460" y="150" width="352" height="10" rx="5"/></clipPath></defs>`
     + `<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="12" style="fill:${p.fundo};stroke:${p.borda}"/>`
+    + topo.join('') + `<g transform="translate(0 ${TOPO})">`
     + metricas.join('')
     + `<line x1="28" x2="${W - 28}" y1="106" y2="106" style="stroke:${p.divisoria}"/>`
     + `<text x="28" y="134" class="r">Contributions per year</text>`
@@ -165,7 +198,7 @@ text { font-family: ${FONTE} }
     + `<text x="460" y="134" class="r">Languages</text><text x="812" y="134" class="r" text-anchor="end">code size, notebooks excluded</text>`
     + `<g clip-path="url(#pilula)">${segmentos.join('')}</g>`
     + legenda.join('')
-    + '</svg>';
+    + '</g></svg>';
 }
 
 const token = process.env.GITHUB_TOKEN;
@@ -173,7 +206,7 @@ const dados = token
   ? await buscar(token, process.env.USERNAME)
   : {
       porAno: [{ ano: 2023, total: 120 }, { ano: 2024, total: 0 }, { ano: 2025, total: 900 }],
-      atual: 3, maior: 9, repos: 7,
+      atual: 3, maior: 9, reposTotal: 40, reposAno: 7, desde: 'Mar 2019', local: 'Earth',
       linguagens: { Python: 500, TypeScript: 300, Go: 120, Rust: 50, Shell: 30 }
     };
 if (!token) {
@@ -185,7 +218,7 @@ if (!token) {
 const pasta = process.argv[2] ?? '.';
 for (const [tema, paleta] of Object.entries(PALETAS)) {
   const svg = desenhar(dados, paleta);
-  if (!token) assert(dados.porAno.every((a) => svg.includes(`>${a.ano}<`)));
+  if (!token) assert(dados.porAno.every((a) => svg.includes(`>${a.ano}<`)) && svg.includes('>On GitHub since Mar 2019<') && svg.includes('>40<'));
   writeFileSync(join(pasta, `atividade-${tema}.svg`), svg);
 }
 const { linguagens, ...resumo } = dados;

@@ -5,7 +5,7 @@ on:
     - cron: "0 6 * * *" # 03:00 em Brasília
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, feat/perfil-2026]
 
 permissions:
   contents: write
@@ -22,6 +22,15 @@ jobs:
           mkdir -p last gen
           git fetch --depth=1 origin output && git archive FETCH_HEAD | tar -x -C last || true
 
+      # snake comendo o gráfico de contribuições, nos azuis do cartão (Primer) em vez do verde padrão
+      - uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3.5.0
+        continue-on-error: true
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            gen/snake-light.svg?color_snake=#0550ae&color_dots=#ebedf0,#b6e3ff,#80ccff,#54aeff,#218bff
+            gen/snake-dark.svg?color_snake=#a5d6ff&color_dots=#161b22,#0d419d,#1158c7,#1f6feb,#388bfd
+
       # PROFILE_TOKEN: token só de leitura, para os repos privados entrarem nas linguagens e na contagem de repos.
       # Sem ele, cai no GITHUB_TOKEN e o cartão conta só o que é público (os totais já incluem os privados).
       - run: node .github/atividade.mjs gen
@@ -34,7 +43,7 @@ jobs:
       - run: |
           mkdir -p dist
           cp assets/*.svg dist/
-          for f in atividade-dark.svg atividade-light.svg; do
+          for f in atividade-dark.svg atividade-light.svg snake-dark.svg snake-light.svg; do
             cp "gen/$f" dist/ 2>/dev/null || cp "last/$f" dist/ 2>/dev/null || echo "::warning::$f não foi gerado"
           done
 
