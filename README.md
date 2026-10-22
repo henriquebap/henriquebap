@@ -7,7 +7,7 @@
 
 <p>
   <a href="https://henriquebap.com/sobre"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-site-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-site-light.svg" alt="henriquebap.com" height="34" /></picture></a>
-  <a href="https://www.linkedin.com/in/henriqueobaptista/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-linkedin-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-linkedin-light.svg" alt="LinkedIn" height="34" /></picture></a>
+  <a href="https://www.linkedin.com/in/henrique-obaptista/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-linkedin-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-linkedin-light.svg" alt="LinkedIn" height="34" /></picture></a>
   <a href="mailto:henrique.obap@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-email-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-email-light.svg" alt="Email" height="34" /></picture></a>
   <a href="https://henriquebap.com/sobre"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-open-dark.svg" /><img src="https://raw.githubusercontent.com/henriquebap/henriquebap/output/btn-open-light.svg" alt="Open to AI Engineer roles" height="34" /></picture></a>
 </p>
