@@ -33,7 +33,7 @@ AI Engineer working across generative AI: agents, RAG, evals and voice AI, plus 
 | Project | What it is |
 |---|---|
 | **[HOB Oficina](https://henriquebap.com/oficina)** · own product | The system an auto mechanic shop runs on every day, now multi-tenant. Agents with typed tools, Jev for typed judgments, guardrails and confirmations decided in code. |
-| **[Medical AI](https://henriquebap.com/sobre#medical-asr)** · VOA Health, 2025–2026 | Streaming ASR experiments, medication-first evaluation of ASR providers, and LLM-as-Judge evaluators in production, calibrated against human annotators. |
+| **[Medical AI](https://henriquebap.com/sobre#medical-asr)** · VOA Health, 2025–2026 | Streaming ASR experiments, medication-first evaluation of ASR providers, and LLM-as-Judge evaluators in production, compared against human annotation and used as a monitoring signal. |
 | **[WordinAI](https://wordinai.com)** · live SaaS, solo | A deep agent (deepagents / LangGraph) that turns long audio into sourced documents: hybrid search, citations assembled in code, model routing by task. |
 
 Those three run in private repositories. Architecture and trade-offs: **[henriquebap/ai-portfolio](https://github.com/henriquebap/ai-portfolio)** and **[henriquebap.com/sobre](https://henriquebap.com/sobre)**.
@@ -42,8 +42,8 @@ Those three run in private repositories. Architecture and trade-offs: **[henriqu
 
 | Area | Project | What it shows |
 |---|---|---|
-| Applied ML | [Education Risk Prediction](https://github.com/henriquebap/datathon-educacao-passos-magicos) · [live](https://henriquebap-datathon-educacao-passos-magicos.hf.space) | XGBoost, FastAPI and a Streamlit dashboard for an education NGO, with Evidently drift monitoring. 92.59% accuracy on held-out data. |
-| Computer vision | [Insurance Computer Vision](https://github.com/henriquebap/R-CNN-OD-Sprint) | Detectron2 / Mask R-CNN on a dataset built from scratch. Top-10 finalist in the Porto Seguro challenge. |
+| Applied ML | [Education Risk Prediction](https://github.com/henriquebap/datathon-educacao-passos-magicos) · [live](https://henriquebap-datathon-educacao-passos-magicos.hf.space) | XGBoost, FastAPI and a Streamlit dashboard for an education NGO, with an Evidently drift report in the dashboard. |
+| Computer vision | [Insurance Computer Vision](https://github.com/henriquebap/R-CNN-OD-Sprint) | Photo check for bicycle insurance: object detection hosted on Roboflow, plus Detectron2 experiments. Top-10 finalist in the Porto Seguro challenge. |
 | Computer vision | [Marine Vision Systems](https://github.com/henriquebap/Blue-Clean-YoloV9) · [YOLOv5](https://github.com/henriquebap/YoloV5-Shark-Detection) | YOLOv9 for marine waste, YOLOv5 for marine animals. |
 | Embeddings | [Genetic Syndrome Classification](https://github.com/henriquebap/Genetic_Syndrome_Classification_w_Embeddings_KNN) | KNN over 320-dimensional image embeddings, t-SNE, multi-metric evaluation. |
 | Time series | [Experimental Stock Forecasting](https://github.com/henriquebap/previsao_acoes) | PyTorch + FastAPI whose monitoring exposed weak generalization, kept public as an honest experiment. |
@@ -57,7 +57,7 @@ Those three run in private repositories. Architecture and trade-offs: **[henriqu
 
 | Area | Tools |
 |---|---|
-| **Evaluate** | LLM-as-Judge · LangSmith · evaluation datasets · WER / CER (jiwer) · Argilla · human calibration (Cohen's κ) · failure analysis |
+| **Evaluate** | LLM-as-Judge · LangSmith · evaluation datasets · WER / CER (jiwer) · Argilla · human agreement (Cohen's κ) · failure analysis |
 | **Agents & LLMs** | OpenAI Agents SDK · LangGraph / deepagents · Jev (TypeSafe) · MCP · RAG and hybrid search · pgvector · prompt caching and model routing |
 | **Model** | PyTorch · Hugging Face · Whisper · VAD and segmentation · scikit-learn · XGBoost · Detectron2 / YOLO |
 | **Build** | Python · FastAPI · TypeScript · Next.js · Supabase / Postgres (RLS) · Zod · Streamlit / Gradio |
